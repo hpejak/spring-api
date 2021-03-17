@@ -1,5 +1,6 @@
 package hr.pejak.demo;
 
+import hr.pejak.dto.Consumption;
 import hr.pejak.dto.WaterConsumption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -30,5 +31,7 @@ public class WaterConsumptionJdbc {
         return jdbcTemplate.queryForObject("SELECT * FROM water WHERE water.year = ? AND water.month = ?", new Object[]{year, month},
                 new BeanPropertyRowMapper<>(WaterConsumption.class));
     }
+
+    public List<Consumption> findConsumptions() {return jdbcTemplate.query(ALL_SQL, new WaterConsumptionRowMapper()); }
 
 }

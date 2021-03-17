@@ -1,6 +1,7 @@
 package hr.pejak;
 
 import hr.pejak.demo.WaterConsumptionJdbc;
+import hr.pejak.dto.Consumption;
 import hr.pejak.dto.WaterConsumption;
 import hr.pejak.service.WaterService;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +35,16 @@ public class EndPoint {
     public ResponseEntity<List<WaterConsumption>> water() {
         try{
           return new ResponseEntity<>(waterConsumptionJdbc.findAll(), HttpStatus.OK);
+        } catch (Exception e) {
+            log.info(e.toString());
+            return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/consumption")
+    public ResponseEntity<List<Consumption>> consumption() {
+        try{
+            return new ResponseEntity<>(waterConsumptionJdbc.findConsumptions(), HttpStatus.OK);
         } catch (Exception e) {
             log.info(e.toString());
             return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
