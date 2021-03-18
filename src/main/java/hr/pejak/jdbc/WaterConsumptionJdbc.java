@@ -1,4 +1,4 @@
-package hr.pejak.demo;
+package hr.pejak.jdbc;
 
 import hr.pejak.dto.Consumption;
 import hr.pejak.dto.WaterConsumption;
