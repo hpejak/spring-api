@@ -21,6 +21,43 @@ import java.util.Date;
 @Service
 @Table(name = "water")
 public class WaterConsumption{
+    public WaterConsumption(Integer year, Integer month, Long consStateReported, Long consStateBill, Float consStateFirstFlore,
+                            Float consStateGroundFlore, Float consStateYardHouse, Float consumptionDiscrepancy, Float billAmount,
+                            Float amountFirstFlore, Float amountGroundFlore, Float amountYardHouse, Float amountDiscrepancy,
+                            Float amountExternal, Float amountCommunicated, Float receivedExternal, Date readDate, String billPayedDate,
+                            Date insertedTime, Long consumptionAll, Float consumptionFirstFlore, Float consumptionGroundFlore,
+                            Float consumptionYardHouse, Float consumptionBill, Float consumptionReported) {
+        this.year = year;
+        this.month = month;
+        this.consStateReported = consStateReported;
+        this.consStateBill = consStateBill;
+        this.consStateFirstFlore = consStateFirstFlore;
+        this.consStateGroundFlore = consStateGroundFlore;
+        this.consStateYardHouse = consStateYardHouse;
+        this.consumptionDiscrepancy = consumptionDiscrepancy;
+        this.billAmount = billAmount;
+        this.amountFirstFlore = amountFirstFlore;
+        this.amountGroundFlore = amountGroundFlore;
+        this.amountYardHouse = amountYardHouse;
+        this.amountDiscrepancy = amountDiscrepancy;
+        this.amountExternal = amountExternal;
+        this.amountCommunicated = amountCommunicated;
+        this.receivedExternal = receivedExternal;
+        this.readDate = readDate;
+        this.billPayedDate = billPayedDate;
+        this.insertedTime = insertedTime;
+        this.consumptionAll = consumptionAll;
+        this.consumptionFirstFlore = consumptionFirstFlore;
+        this.consumptionGroundFlore = consumptionGroundFlore;
+        this.consumptionYardHouse = consumptionYardHouse;
+        this.consumptionBill = consumptionBill;
+        this.consumptionReported = consumptionReported;
+    }
+
+    public WaterConsumption(Integer year, Integer month) {
+        this.year = year;
+        this.month = month;
+    }
 
     @Id
     private Long id;

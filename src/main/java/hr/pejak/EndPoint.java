@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +28,12 @@ public class EndPoint {
         this.waterService = waterService;
         this.waterConsumptionJdbc = waterConsumptionJdbc;
     }
+
+    @GetMapping("/healthCheck")
+    public ResponseEntity<String> getHealthCheck(){
+        return new ResponseEntity<>("Working!",HttpStatus.OK);
+    }
+
 
     @GetMapping("/waterConsumption")
     public ResponseEntity<List<WaterConsumption>> water() {
@@ -71,7 +75,6 @@ public class EndPoint {
             return new ResponseEntity<>(WaterConsumption.builder().build(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
     @GetMapping("/getFullConsumption")
     public ResponseEntity<List<WaterConsumption>> getFullConsumption() {
 
@@ -108,5 +111,23 @@ public class EndPoint {
             return new ResponseEntity<>(WaterConsumption.builder().build(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
+    @PostMapping("/healthCheck")
+    public ResponseEntity<String> postHealthCheck(){
+        return new ResponseEntity<>("Working!",HttpStatus.OK);
+    }
+
+    @PostMapping("/insertWaterConsumption")
+    public ResponseEntity<Integer> insertWaterConsumption(@RequestBody WaterConsumption waterConsumption ) {
+        try {
+            return new ResponseEntity<>(waterConsumptionJdbc.insertWaterConsumption(waterConsumption), HttpStatus.OK);
+        } catch ( Exception e) {
+            log.info(e.toString());
+            return new ResponseEntity<>(0, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
 
 }
