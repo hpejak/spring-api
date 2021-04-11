@@ -34,7 +34,6 @@ public class EndPoint {
         return new ResponseEntity<>("Working!",HttpStatus.OK);
     }
 
-
     @GetMapping("/waterConsumption")
     public ResponseEntity<List<WaterConsumption>> water() {
         try{
@@ -75,6 +74,7 @@ public class EndPoint {
             return new ResponseEntity<>(WaterConsumption.builder().build(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @GetMapping("/getFullConsumption")
     public ResponseEntity<List<WaterConsumption>> getFullConsumption() {
 
