@@ -31,6 +31,7 @@ public class EndPoint {
 
     @GetMapping("/healthCheck")
     public ResponseEntity<String> getHealthCheck(){
+        log.info("Health Check is done");
         return new ResponseEntity<>("Working!",HttpStatus.OK);
     }
 
